@@ -41,6 +41,9 @@
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.41);
 }
 
+.text-warning-2 {
+    color: #ffee90;
+}
 /* fonts */
 @font-face {
     font-family: 'temting';
@@ -142,8 +145,8 @@ h2 {
 }
 
 .no-scroll {
-    overflow: hidden;
-    height: 100vh;
+    /* overflow: hidden; */
+    /* height: 100vh; */
 }
 .img-all-comment {
     background: rgb(249, 239, 227);
@@ -274,7 +277,7 @@ h2 {
 }
 
 .hero .content-hero {
-    padding-top: 50px;
+    padding-top: 30px;
     position: relative;
     z-index: 2;
 

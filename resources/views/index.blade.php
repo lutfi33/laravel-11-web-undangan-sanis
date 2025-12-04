@@ -102,20 +102,23 @@
                         <h4 class="text-white text-decor">#DiSHahkanDIKA</h4>
                     </div>
                     <div class="position-relative mt-5">
-                        <h3 class="position-absolute top-0 start-0 mt-3 text-white">From Classmate</h3>
-                        <h3 class="position-absolute bottom-0 end-0 mb-3 text-white">To Soulmate</h3>
+                        <p class="position-absolute top-0 start-0 mt-3 fs-2 text-warning-2">From Classmate</p>
+                        <p class="position-absolute bottom-0 end-0 mb-3 fs-2 text-warning-2">To Soulmate</p>
                         <video width="320" height="240" autoplay muted loop playsinline>
                             <source src="{{ asset('asset/img/vidland2.MOV') }}" type="video/mp4">
                         </video>
                     </div>
-                    <br>
+
+                    <div>
+
+                        <p class="mt-3 fs-5 text-light">Kamu Diundang!! <br>Dihari bahagiannya Sannis & Dika</p>
+                    </div>
 
                     <div class="content-hero text-white">
                         <small>Dear to : </small>
                         <h4 class="my-3">{{ $mycontact->name ?? 'Tamu Undangan' }}</h4>
                         <a href="#open" id="btn-open" class="btn btn-light bg-gold border-0 mx-5"><i
                                 class="bi bi-envelope-open-heart">&ensp;</i>Buka Undangan</a>
-                        <p class="mt-3 pb-5">Kamu Diundang!! <br>Dihari bahagiannya Sannis & Dika</p>
                     </div>
                 </div>
 
@@ -250,24 +253,35 @@
                     <div class="row">
                         <div class="col-12" data-aos="fade-zoom-in" data-aos-anchor-placement="center-bottom"
                             data-aos-delay="200" data-aos-duration="2000">
-                            <img src="{{ asset('asset/img/dikanew.png') }}" class="img-fluid rounded" width="50%"
-                                alt="mempelai-1" />
-                            <h4 class="text-gold text-decor mt-2">Andika Pangestu Saputra <br> (Dika)</h4>
+                            <div class="row text-start">
+                                <div class="col-4">
+                                    <img src="{{ asset('asset/img/dika.png') }}" class="img-fluid rounded-circle"
+                                        alt="mempelai-1" />
+                                </div>
+                                <div class="col-8  my-auto">
+                                    <h4 class="text-gold text-decor mt-2">Andika Pangestu Saputra (Dika)</h4>
+                                    <p>
+                                        Putra ke 2 dari Bapak Tuis dan Ibu Jumiyati
+                                    </p>
+                                </div>
+                            </div>
 
-                            <p class=" mx-4">
-                                Putra ke 2 dari Bapak Tuis dan Ibu Jumiyati
-                            </p>
                         </div>
 
-                        <div class="col-12" data-aos="fade-zoom-in" data-aos-anchor-placement="center-bottom"
+                        <div class="col-12 mt-4" data-aos="fade-zoom-in" data-aos-anchor-placement="center-bottom"
                             data-aos-delay="400" data-aos-duration="2000">
-                            <img src="{{ asset('asset/img/sanisnew.png') }}" class="img-fluid rounded-circle"
-                                width="50%" alt="mempelai-1" />
-                            <h4 class="text-gold text-decor mt-2">Sannis Hening Astuti <br> (Sannis)</h4>
+                            <div class="row text-start">
+                                <div class="col-8 my-auto">
+                                    <h4 class="text-gold text-decor mt-2">Sannis Hening Astuti (Sannis)</h4>
+                                    <p>Putri pertama dari Bapak Sujatmiko Ibu Sri Tumpiyati
+                                    </p>
+                                </div>
+                                <div class="col-4">
+                                    <img src="{{ asset('asset/img/sanis.png') }}" class="img-fluid rounded-circle" alt="mempelai-1" />
+                                </div>
+                            </div>
+                           
 
-                            <p class="mx-3">
-                                Putri pertama dari Bapak Sujatmiko Ibu Sri Tumpiyati
-                            </p>
                         </div>
                     </div>
 
@@ -349,13 +363,22 @@
 
                     <div class="row" data-aos="fade-up" data-aos-delay="200" data-aos-duration="2000"
                         data-aos-anchor-placement="top-bottom">
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
                             <div class="card mt-4  border-0 rounded-0 text-dark">
                                 <h3 class="mt-2 text-decor">Kirim Ke</h3>
                                 <img src="{{ asset('asset/img/mandiri.webp') }}" width="30%"
                                     class="img-fluid mt-3 mx-auto" alt="barcode">
                                 <p class="fw-bold fs-3 mb-0 mt-2 ">1560026025991</p>
                                 <small class=" mb-3">AN. Sannis Hening Astuti</small>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card mt-4  border-0 rounded-0 text-dark">
+                                <h3 class="mt-2 text-decor">Kirim Ke</h3>
+                                <img src="{{ asset('asset/img/bri.png') }}" width="30%"
+                                    class="img-fluid mt-3 mx-auto" alt="barcode">
+                                <p class="fw-bold fs-3 mb-0 mt-2 ">007801020114537</p>
+                                <small class=" mb-3">AN. Andika Pangestu Saputra</small>
                             </div>
                         </div>
                     </div>
