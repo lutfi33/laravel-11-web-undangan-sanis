@@ -12,12 +12,12 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login', [MainController::class, 'login'])->name('login');
     Route::post('/storeLogin', [MainController::class, 'storeLogin'])->name('storeLogin');
     Route::post('/storePesan', [MainController::class, 'storePesan'])->name('storePesan');
-    Route::get('/send/{slug}', [MainController::class, 'sendUndangan'])->name('sendUndangan');
 });
 
+Route::get('/send/{slug}', [MainController::class, 'sendUndangan'])->name('sendUndangan');
 // Logout untuk user yang sudah login
 Route::middleware('auth')->group(function () {
-    Route::get('/send/{slug}', [MainController::class, 'sendUndangan'])->name('sendUndangan');
+    // Route::get('/send/{slug}', [MainController::class, 'sendUndangan'])->name('sendUndangan');
     Route::get('/logout', [MainController::class, 'logout'])->name('logout');
 });
 

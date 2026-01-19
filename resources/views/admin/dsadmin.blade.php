@@ -44,14 +44,29 @@
                                     <td>+{{ $item->number }}</td>
                                     <td class="text-center">
                                         @php
-                                            $undanganUrl = url('send/' . $item->slug);
-                                            $userdata = strip_tags($dataMessage->message);
-                                            $messageText = "Dear $item->name\n\n\n $userdata \n\n\nLink Undangan : $undanganUrl ";
+                                            $undanganUrl = 'https://instudio.id/send/'.$item->slug;
+
+                                            // Ambil data dan ubah tag HTML menjadi enter
+                                            $raw = $dataMessage->message;
+                                            $raw = preg_replace('/<br\s*\/?>/i', "\n", $raw);
+                                            $raw = preg_replace('/<\/p>/i', "\n", $raw);
+                                            $raw = preg_replace('/<\/div>/i', "\n", $raw);
+
+                                            // Buang semua tag HTML lain
+                                            $userdata = trim(strip_tags($raw));
+
+                                            // Susun pesan
+                                            $messageText =
+                                                "Dear $item->name" . PHP_EOL . PHP_EOL .
+                                                $userdata . PHP_EOL . PHP_EOL .
+                                                "Link Undangan : $undanganUrl";
                                         @endphp
-                                        <a target="_blank" href="https://wa.me/{{ $item->number }}?text={{ urlencode($messageText) }}"
+
+                                        <a target="_blank"
+                                            href="https://wa.me/{{ $item->number }}?text={{ urlencode($messageText) }}"
                                             class="btn btn-sm btn-primary ">Undang</a>
-                                        <a href="{{ url('send/' . $item->slug) }}" class="btn btn-sm btn-info "
-                                            target="_blank">Lihat</a>
+                                        <a href="http://127.0.0.1:8000/send/{{ $item->slug }}"
+                                            class="btn btn-sm btn-info " target="_blank">Lihat</a>
                                         <a href="{{ route('delTamu', ['id' => $item->id]) }}" data-id="{{ $item->id }}"
                                             class="btn btn-sm btn-danger pages-delete-btn">Delete</a>
                                     </td>
