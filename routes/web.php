@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', [MainController::class, 'landingPage'])->name('landingPage');;
+    Route::get('/', [MainController::class, 'toTamu'])->name('toTamu');;
+    Route::get('/undangan', [MainController::class, 'landingPage'])->name('landingPage');;
     Route::get('/login', [MainController::class, 'login'])->name('login');
     Route::post('/storeLogin', [MainController::class, 'storeLogin'])->name('storeLogin');
     Route::post('/storePesan', [MainController::class, 'storePesan'])->name('storePesan');

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dika ❤️ Sannis</title>
+    <title>Hai</title>
 
     <!-- icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
@@ -15,19 +15,19 @@
 
     <!-- aos -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/60bfabd217.js" crossorigin="anonymous"></script>
 
     <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet" />
     <!-- boostrap -->
     <link href="{{ asset('asset/bootstraps/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('asset/css/homepage.css') }}" />
 </head>
 
-<body class="no-scroll">
+<body class="d-flex">
     <main>
         @if (session()->has('success'))
             <script>
@@ -40,627 +40,587 @@
                 })
             </script>
         @endif
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
+        <button class="burger-menu" onclick="toggleNav()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
+        <div class="nav-overlay" id="navOverlay">
+            <div class="nav-content">
+                <button class="btn-close-nav" onclick="toggleNav()">CLOSE</button>
 
-                <!-- play -->
-                <div class="container bg-transparent fixed-bottom">
-                    <div class="row d-flex justify-content-end" style="margin-top: -110px;">
-                        <div class="col-12 text-end w-25">
-                            <audio src="{{ asset('asset/music/bgsanis.MP3') }}" id="music" autoplay></audio>
-                            <button onclick="pauseMusic()" class="btn btn-light bg-gold border-0"><i
-                                    class="bi bi-music-note"></i></button>
-                        </div>
-                    </div>
+                <nav class="nav-list">
+                    <a href="index.html" class="nav-link" onclick="toggleNav()"><span class="arrow">→</span> Home</a>
+                    <a href="undangan.html" class="nav-link" onclick="toggleNav()"><span class="arrow">→</span> Bride
+                        and Groom</a>
+                    <a href="#event" class="nav-link" onclick="toggleNav()"><span class="arrow">→</span> Wedding
+                        Event</a>
+                    <a href="#gallery" class="nav-link" onclick="toggleNav()"><span class="arrow">→</span> Gallery</a>
+                    <a href="#rsvp" class="nav-link" onclick="toggleNav()"><span class="arrow">→</span> RSVP</a>
+                    <a href="#gift" class="nav-link" onclick="toggleNav()"><span class="arrow">→</span> Gift</a>
+                </nav>
+
+                <div class="mt-4 p-3 rounded nav-block ">
+                    <small class="d-block opacity-50">Personalized for</small>
+                    <span class="fw-bold">Nurul Latifah</span>
                 </div>
-
-                <script>
-                    var audio = document.getElementById("music");
-
-                    function pauseMusic() {
-                        if (audio.paused) {
-                            audio.play();
-                        } else {
-                            audio.pause();
-                        }
-                    }
-                </script>
-                <!-- navbar -->
-                <div class="container bg-transparent fixed-bottom">
-                    <div class="row text-center pt-3 header-main pb-2 rounded mx-2">
-                        <div class="col-3">
-                            <a href="#mempelai" class="text-decoration-none text-white">
-                                <h6 class="my-0">
-                                    <i class="bi bi-arrow-through-heart"></i>
-                                </h6>
-                            </a>
-                        </div>
-                        <div class="col-3">
-                            <a href="#acara" class="text-decoration-none text-white">
-                                <h6 class="my-0"><i class="bi bi-calendar2-heart"></i></h6>
-                            </a>
-                        </div>
-                        <div class="col-3">
-                            <a href="#galeri" class="text-decoration-none text-white">
-                                <h6 class="my-0"><i class="bi bi-balloon-heart"></i></h6>
-                            </a>
-                        </div>
-                        <div class="col-3">
-                            <a href="#ucapan" class="text-decoration-none text-white">
-                                <h6 class="my-0"><i class="bi bi-envelope-paper-heart"></i></h6>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- HERO -->
-                <div class="container-fluid hero d-flex flex-column justify-content-between text-center">
-                    <div class="mt-3">
-                        <h4 class="text-white text-decor">#DIKAlatakdirberSHAma</h4>
-                        <h4 class="text-white text-decor">#DiSHahkanDIKA</h4>
-                    </div>
-                    <div class="position-relative mt-5">
-                        <p class="position-absolute top-0 start-0 mt-3 fs-2 text-warning-2">From Classmate</p>
-                        <p class="position-absolute bottom-0 end-0 mb-3 fs-2 text-warning-2">To Soulmate</p>
-                        <video width="320" height="240" autoplay muted loop playsinline>
-                            <source src="{{ asset('asset/img/vidland2.MOV') }}" type="video/mp4">
-                        </video>
-                    </div>
-
-                    <div>
-
-                        <p class="mt-3 fs-5 text-light">Kamu Diundang!! <br>Dihari bahagiannya Sannis & Dika</p>
-                    </div>
-
-                    <div class="content-hero text-white">
-                        <small>Dear to : </small>
-                        <h4 class="my-3">{{ $mycontact->name ?? 'Tamu Undangan' }}</h4>
-                        <a href="#open" id="btn-open" class="btn btn-light bg-gold border-0 mx-5"><i
-                                class="bi bi-envelope-open-heart">&ensp;</i>Buka Undangan</a>
-                    </div>
-                </div>
-
-                <!-- Caption -->
-                <div id="caption" class="container bg-mood">
-
-                    <div id="open" class="row text-center text-white">
-                        <div class="col-12">
-                            <!-- <p>
-                                "Allah menciptakan pasangan hidup untukmu dari jenismu sendiri, supaya kamu mencari ketenangan kepadanya, dan Dia menjadikan di antaramu rasa kasih sayang dan belas kasihan."
-                            </p>
-                            <p> (Quran, Al-A'raf: 189)</p> -->
-                        </div>
-                    </div>
-                </div>
-
-                <div id="targetSection" class="container text-center img-landing">
-
-                    <div class="img-value">
-
-                        <!-- hitung mundur -->
-                        <div class="row  main-coundown" data-aos="fade-up" data-aos-duration="2000">
-                            <div class="col-2"></div>
-                            <div class="col-8 px-0 py-4 bg-marron rounded text-white ">
-                                <h2 class="text-capitalize text-beth">Countdown Event</h2>
-                                <div class="row mt-4 justify-content-center">
-                                    <div class="col-2 me-2 col-cound rounded">
-                                        <h3 id="hari" class="mb-0 mt-2">12</h3>
-                                        <small>Hari</small>
-                                    </div>
-                                    <div class="col-2 me-2 col-cound rounded">
-                                        <h3 id="jam" class="mb-0 mt-2">0</h3>
-                                        <small>Jam</small>
-                                    </div>
-                                    <div class="col-2 me-2 col-cound rounded">
-                                        <h3 id="menit" class="mb-0 mt-2">0</h3>
-                                        <small>Menit</small>
-                                    </div>
-                                    <div class="col-2 col-cound rounded">
-                                        <h3 id="detik" class="mb-0 mt-2">0</h3>
-                                        <small>Detik</small>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-                    </div>
-                    <section class="pt-4 " data-aos="fade-zoom-in" data-aos-anchor-placement="center-bottom"
-                        data-aos-delay="200" data-aos-duration="2000" style="rotate: -7deg;">
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col-8 text-start">
-                                <h5 class="text-dark text-decor">The Wedding Of</h5>
-                                <h2 class="text-beth">Sannis & Dika</h2>
-                                <p>December 14th, 2025</p>
-                            </div>
-                            <div class="col-2"></div>
-                        </div>
-
-                    </section>
-                </div>
-
-
-                <div class="container text-center bermula-section">
-
-                    <div class="img-value-2" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="200">
-                        <video width="320" height="240" autoplay muted loop playsinline class="video-nikah"
-                            style="rotate: 10deg;">
-                            <source src="{{ asset('asset/img/bermula.MOV') }}" type="video/mp4" class="rounded">
-                        </video>
-                    </div>
-                    <section id="open" class="pt-4 " data-aos="fade-zoom-in"
-                        data-aos-anchor-placement="center-bottom" data-aos-delay="200" data-aos-duration="2000"
-                        style="rotate: 10deg;">
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col-10 text-start">
-                                <h5 class="text-dark text-decor">Dimana semula bermulai?</h5>
-                                <p>Tak disangka, langkah yang berawal dari satu ruang kelas yang sama di sekolah teknik
-                                    menengah kini bermuara pada ikatan serius. Siapa sangka tatap sederhana yang dulu
-                                    hanya sekilas, kini berubah menjadi janji seumur hidup.Kita berjalan dari hari-hari
-                                    biasa, menuju kisah luar biasa yang hanya ditakdirkan kepada dua hati yang saling
-                                    menemukan.</p>
-                            </div>
-                        </div>
-
-                    </section>
-                </div>
-
-                <div class="container text-center d-flex justify-content-center flex-column surat-section">
-                    <div class="row" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="200">
-                        <div class="col-2"></div>
-                        <div class="col-8">
-                            <img src="{{ asset('asset/img/akhir.png') }}" class="img-fluid w-50" alt="">
-                            <p>Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan
-                                untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan
-                                di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar
-                                terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.</p>
-                            <h6>Ar-Rum · Ayat 21
-                            </h6>
-                        </div>
-                        <div class="col-2"></div>
-                    </div>
-
-
-                </div>
-
-                <!-- mempelai -->
-                <div id="mempelai" class="container main-bg text-center text-dark">
-                    <img src="{{ asset('asset/img/top.png') }}" class="img-fluid w-100" alt="">
-
-                    <h2 class=" text-dark" style="z-index: 10; " data-aos="fade-up" data-aos-duration="2000"
-                        data-aos-delay="200">
-                        Our Wedding
-                    </h2>
-
-                    <video width="300" height="220" autoplay muted loop playsinline class="video-nikah"
-                        data-aos="fade-up" data-aos-duration="2000" data-aos-delay="200">
-                        <source src="{{ asset('asset/img/nikah.MOV') }}" type="video/mp4" class="rounded">
-                    </video>
-
-
-                    <section>
-                        <p class="mb-4 px-4">
-                            Assalamu'alaikum Warahmatullahi Wabarakatuh, Dengan memohon rahmat
-                            dan ridho Allah SWT. InsyaAllah kami menyelenggarakan acara
-                            pernikahan :
-                        </p>
-                    </section>
-
-                    <div class="row">
-                        <div class="col-12" data-aos="fade-zoom-in" data-aos-anchor-placement="center-bottom"
-                            data-aos-delay="200" data-aos-duration="2000">
-                            <div class="row text-start">
-                                <div class="col-4">
-                                    <img src="{{ asset('asset/img/dika.png') }}" class="img-fluid rounded-circle"
-                                        alt="mempelai-1" />
-                                </div>
-                                <div class="col-8  my-auto">
-                                    <h4 class="text-gold text-decor mt-2">Andika Pangestu Saputra (Dika)</h4>
-                                    <p>
-                                        Putra ke 2 dari Bapak Tuis dan Ibu Jumiyati
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-12 mt-4" data-aos="fade-zoom-in" data-aos-anchor-placement="center-bottom"
-                            data-aos-delay="400" data-aos-duration="2000">
-                            <div class="row text-start">
-                                <div class="col-8 my-auto">
-                                    <h4 class="text-gold text-decor mt-2">Sannis Hening Astuti (Sannis)</h4>
-                                    <p>Putri pertama dari Bapak Sujatmiko Ibu Sri Tumpiyati
-                                    </p>
-                                </div>
-                                <div class="col-4">
-                                    <img src="{{ asset('asset/img/sanis.png') }}" class="img-fluid rounded-circle" alt="mempelai-1" />
-                                </div>
-                            </div>
-                           
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <!-- save the date -->
-                <div class="container d-flex flex-column justify-content-center text-center save-date">
-
-                    <!-- informasi -->
-                    <div id="acara" class="row text-dark pb-5">
-                        <div class="col-12 px-3">
-                            <h3 class="text-gold text-decor" data-aos="fade-up" data-aos-duration="2000"
-                                data-aos-delay="200">Save The Date</h3>
-                            <img src="{{ asset('asset/img/logosa.png') }}" class="img-fluid w-25 my-2 rounded-circle"
-                                alt="" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="200">
-                            <div class="card bg-transparent border-0" data-aos="fade-up" data-aos-delay="200"
-                                data-aos-duration="2000">
-                                <div class="card-body">
-                                    <h4 class="card-title text-beth">Akad Nikah</h4>
-                                    <p class="card-text mt-2 mb-2 text-secondary">
-                                        Ahad, 14 Desember 2025
-                                    </p>
-                                    <p class="card-text mb-2 text-secondary">
-                                        Pukul 08:00 - Selesai
-                                    </p>
-                                    <p class="card-text">
-                                        Loano Kulon, rt 03/04, Loano, Purworejo
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="card bg-transparent border-0 mt-2" data-aos="fade-up" data-aos-delay="400"
-                                data-aos-duration="2000">
-                                <div class="card-body">
-                                    <h4 class="card-title text-beth">Resepsi</h4>
-                                    <p class="card-text my-2 text-secondary">
-                                        Ahad, 14 Desember 2025
-                                    </p>
-                                    <p class="card-text mb-2 text-secondary">
-                                        Pukul 12:30 - 15:00
-                                    </p>
-                                    <p class="card-text">
-                                        Loano Kulon, rt 03/04, Loano, Purworejo
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- wedding gift -->
-                <div class="container text-center gift-section">
-                    <h2 class=" mt-5 text-dark" style="z-index: 10; rotate: -10deg;" data-aos="fade-up"
-                        data-aos-duration="2000" data-aos-delay="200">
-                        Our Location
-                    </h2>
-                    <!-- maps -->
-                    <div id="lokasi" class="row mb-5 ">
-                        <div class="col-12">
-                            <div class="card mt-3 peta-responsive" data-aos="fade-up" data-aos-delay="400"
-                                data-aos-duration="2000" data-aos-anchor-placement="top-bottom">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083.9678313565782!2d110.0353664!3d-7.675738099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aeba0c40dada9%3A0xc7fb4f9739f13d41!2sSelaras%20Suai!5e1!3m2!1sen!2sid!4v1764772653255!5m2!1sen!2sid"
-                                    width="300" height="250" style="border:0;" allowfullscreen=""
-                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            </div>
-                            <a href="https://maps.app.goo.gl/U8NfTDARuBpubKbeA"
-                                class="btn my-3 btn-dark bg-marron border-0 ">Open</a>
-                        </div>
-                    </div>
-
-                    <img src="asset/img/flowers.png" class="img-fluid w-25" alt="">
-
-                    <h2 class=" mt-5 text-dark" style="z-index: 10; rotate: -10deg;" data-aos="fade-up"
-                        data-aos-duration="2000" data-aos-delay="200">
-                        Wedding Gift
-                    </h2>
-
-                    <div class="row" data-aos="fade-up" data-aos-delay="200" data-aos-duration="2000"
-                        data-aos-anchor-placement="top-bottom">
-                        <div class="col-12 mb-3">
-                            <div class="card mt-4  border-0 rounded-0 text-dark">
-                                <h3 class="mt-2 text-decor">Kirim Ke</h3>
-                                <img src="{{ asset('asset/img/mandiri.webp') }}" width="30%"
-                                    class="img-fluid mt-3 mx-auto" alt="barcode">
-                                <p class="fw-bold fs-3 mb-0 mt-2 ">1560026025991</p>
-                                <small class=" mb-3">AN. Sannis Hening Astuti</small>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="card mt-4  border-0 rounded-0 text-dark">
-                                <h3 class="mt-2 text-decor">Kirim Ke</h3>
-                                <img src="{{ asset('asset/img/bri.png') }}" width="30%"
-                                    class="img-fluid mt-3 mx-auto" alt="barcode">
-                                <p class="fw-bold fs-3 mb-0 mt-2 ">007801020114537</p>
-                                <small class=" mb-3">AN. Andika Pangestu Saputra</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Caption -->
-                <div id="caption" class="container bg-our">
-
-                    <div class="row text-center text-white">
-                        <div class="col-12">
-                            <!-- <p>
-                                "Allah menciptakan pasangan hidup untukmu dari jenismu sendiri, supaya kamu mencari ketenangan kepadanya, dan Dia menjadikan di antaramu rasa kasih sayang dan belas kasihan."
-                            </p>
-                            <p> (Quran, Al-A'raf: 189)</p> -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- galeri -->
-                <div id="galeri" class="container text-center position-relative img-galeri">
-                    <h2 class="position-absolute top-25 start-50 translate-middle-x mt-3  text-dark"
-                        style="z-index: 10; rotate: -10deg;">
-                        Our Moments
-                    </h2>
-
-                    <div class="row m-3" data-aos="fade-up" data-aos-delay="400" data-aos-duration="2000"
-                        data-aos-anchor-placement="top-bottom">
-                        <div class="col-12 m-0 p-0">
-                            <img src="{{ asset('asset/img/mygaleri-6.jpg') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="col-6 m-0 p-0">
-                            <img src="{{ asset('asset/img/mygaleri-5.jpg') }}" class="img-fluid" alt="">
-                        </div>
-
-                        <div class="col-6 m-0 p-0">
-                            <img src="{{ asset('asset/img/mygaleri-3.jpg') }}" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Caption -->
-                <div id="caption" class="container bg-our-bottom">
-
-                    <div class="row text-center text-white">
-                        <div class="col-12">
-                            <!-- <p>
-                                "Allah menciptakan pasangan hidup untukmu dari jenismu sendiri, supaya kamu mencari ketenangan kepadanya, dan Dia menjadikan di antaramu rasa kasih sayang dan belas kasihan."
-                            </p>
-                            <p> (Quran, Al-A'raf: 189)</p> -->
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- comment -->
-                <div class="container text-center img-all-comment">
-
-                    <div class="row" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000"
-                        data-aos-anchor-placement="top-bottom">
-                        <div class="col-12">
-                            <h2 class=" my-3  text-dark" style="z-index: 10; rotate: -10deg;">
-                                Pesan & Harapan
-                            </h2>
-                            <div id="carouselExampleFade" class="carousel slide carousel-fade mt-5"
-                                data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    @foreach ($message as $item)
-                                        <div class="carousel-item  {{ $item->id == 1 ? 'active' : '' }} ">
-                                            <div
-                                                class="card border-0 text-dark b-message d-flex flex-column justify-content-center mx-auto text-center">
-                                                <img src="{{ asset('asset/img/flowers.png') }}"
-                                                    class="img-fluid text-center w-25 mb-3 mx-auto" alt="">
-                                                <p>{{ $item->pesan }}</p>
-                                                <h6 class="text-decor">{{ $item->name }}</h6>
-                                                <small>{{ $item->confirm }}</small>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev " type="button"
-                                data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon bg-marron" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                                <span class="carousel-control-next-icon bg-marron" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- form -->
-                <div id="ucapan"
-                    class="container text-center img-comment d-flex flex-column justify-content-center">
-
-                    <div class="row " data-aos="fade-up" data-aos-delay="400" data-aos-duration="2000"
-                        data-aos-anchor-placement="top-bottom">
-                        <div class="col-1"></div>
-                        <div class="col-10">
-
-                            <div class="card text-start bg-transparent  border-0 text-dark">
-                                <h3 class="text-center text-decor mt-2">Kirim Ucapan</h3>
-                                @if ($errors->any())
-                                    <div class="alert text-white my-2 bg-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $item)
-                                                <li>{{ $item }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <form class="px-3" action="{{ route('storePesan') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-2">
-                                        <label for="name" class="form-label">Nama🎈</label>
-                                        <input type="text" class="form-control" name="name" id="name"
-                                            required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="pesan" class="form-label">Ucapan💌</label>
-                                        <textarea class="form-control" id="pesan" name="pesan" rows="3" required></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="optionStatus" class="form-label">Keterangan</label>
-                                        <select name="optionStatus" class="form-select" id="optionStatus">
-                                            <option value="Hadir">Hadir</option>
-                                            <option value="Insyaallah">Insyaallah</option>
-                                            <option value="Doa Terbaik">Doa Terbaik</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-4">
-                                        <button type="submit" class="btn btn-light bg-gold"><i
-                                                class="bi bi-envelope-paper-heart-fill"></i>&ensp;Kirim</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
-
-                    </div>
-
-                </div>
-
-                <section id="akhir">
-                    <div class="container-fluid text-center text-white close">
-                        <section data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-duration="1000"
-                            data-aos-offset="0">
-                            <img src="{{ asset('asset/img/logosa.png') }}" class="img-fluid w-25 rounded-circle my-3"
-                                alt="">
-                            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan
-                                hadir untuk memberikan doa restu kepada kedua mempelai.</p>
-                            <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
-                            <p>Turut berbahagia, Segenap keluarga besar</p>
-                        </section>
-
-                        <h1 class="text-decor" data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000">Dika
-                            & Sannis</h1>
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="b-bot"></div>
-                            </div>
-                            <div class="col-2 text-center">
-                                <h3> 💛 </h3>
-                            </div>
-                            <div class="col-5">
-                                <div class="b-bot"></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <footer style="background-color: rgba(102, 11, 11, 1);">
-                    <div class="container-fluid text-center" style="padding-bottom: 90px; padding-top: 30px;">
-                        <h5 class="text-white ">Dibuat Oleh :</h5>
-                        <img src="{{ asset('asset/img/logo_instudio_white.svg') }}" class="img-fluid" width="40%"
-                            alt="instudio"><br>
-                        <a class="btn btn-light bg-gold border-0 btn-sm mt-3" target="_blank"
-                            href="https://wa.me/+6287715764870">Pesan Udangan</a>
-                    </div>
-                </footer>
             </div>
-            <div class="col-md-4"></div>
         </div>
-    </main>
+        <section class="left-side sticky-top vh-100 align-items-center justify-content-center ">
+            <div style="bottom: 80px; left: 40px" class="container position-absolute title-left" data-aos="fade-right"
+                data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom">
+                <p>THE WEDDING OF</p>
+                <h1>Adi & Violin</h1>
+            </div>
+            <div class="overlay"></div>
+        </section>
 
-    <!-- aos -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <section class="right-side">
+            <img src="{{ asset('asset/img/2.webp') }}" class="bg-object-fit" alt="Background">
+            <section class="hero vh-100 d-flex align-items-center flex-column justify-content-center">
+                <div class="d-flex relative" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-anchor-placement="bottom-bottom">
+                    <p class="px-2">15/02</p>
+                    <p>2026</p>
+                </div>
+                <section class="title text-center" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-anchor-placement="bottom-bottom">
+                    <p>The Wedding of</p>
+                    <h1>Adi & Violin</h1>
+                </section>
+                <section class="pesan text-center" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-anchor-placement="bottom-bottom">
+                    <p class="px-5">
+                        “Letakkan aku dalam hatimu, maka akupun akan meletakkanmu dalam
+                        hatimu”
+                        <br> QS. Baqarah : 152
+                    </p>
+                </section>
+            </section>
 
-    {{-- sweetaler --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <section class="wanita vh-100 ">
+                <div class="d-flex flex-column align-items-start justify-content-center text-wrap p-5"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom">
 
-    <script>
-        AOS.init({
-            once: true
-        });
+                    <p>
+                        THE BRIDE </p>
+                    <h2 class="text-start name">Agnestya Lintang Violin Asian</h2>
+                    <p>PUTRI KEDUA DARI</p>
+                    <p>Sukirman & Asih Puji Astuti </p>
+                    <a href="https://www.instagram.com/v.asiannn/" target="_blank" class="btn-instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                        </svg>
+                        v.asiannn
+                    </a>
+                    </p>
+                </div>
+            </section>
+            <section class="pria vh-100 d-flex flex-column align-items-start justify-content-center text-wrap p-5">
+                <div class="d-flex flex-column align-items-start justify-content-center text-wrap p-3"
+                    data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom">
+                    <p>
+                        THE BRIDE </p>
+                    <h2 class="text-start name">Kunto Setiadi</h2>
+                    <p>PUTRA KEDUA DARI</p>
+                    <p>Supriyono & Tiwen</p>
+                    <a href="https://www.instagram.com/adhi3199/" target="_blank" class="btn-instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                        </svg>
+                        adhi3199
+                    </a>
+                    </p>
+                    <div></div>
+            </section>
+            <section id="event"
+                class="save-the-date vh-100 d-flex align-items-center justify-content-center text-center ">
 
-        // fullscreen
-        document.addEventListener("DOMContentLoaded", function() {
-            const openButton = document.getElementById("btn-open");
-            const openSection = document.getElementById("open");
-            const musicPlayer = document.getElementById("music");
+                <div class="p-4" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-anchor-placement="bottom-bottom">
+                    <h2 class="mb-3">SAVE THE DATE</h2>
+                    <p>Sabtu, 01 Februari 2026</p>
 
-            // Pastikan scroll terkunci saat awal
-            document.body.classList.add("no-scroll");
+                    <div class="d-flex justify-content-center my-4">
+                        <div class="countdown-item"><span id="days" class="countdown-number">00</span><span
+                                class="countdown-label">Hari</span></div>
+                        <div class="countdown-item"><span id="hours" class="countdown-number">00</span><span
+                                class="countdown-label">Jam</span></div>
+                        <div class="countdown-item"><span id="minutes" class="countdown-number">00</span><span
+                                class="countdown-label">Menit</span></div>
+                        <div class="countdown-item"><span id="seconds" class="countdown-number">00</span><span
+                                class="countdown-label">Detik</span></div>
+                    </div>
 
-            if (openButton && openSection) {
-                openButton.addEventListener("click", function(event) {
-                    event.preventDefault();
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Adi+%26+Violin&details=Acara+pernikahan+Nada+Syamrotul+Jannah+%26+Aditya+Dwi+Rully+Murita&dates=20250906T010000Z/20250906T060000Z&location=Gedung+Balai+Prajurit+RM+Moedjono+Poerbonegoro,+Sidoarjo"
+                        target="_blank" class="btn-instagram">
+                        SIMPAN TANGGAL
+                    </a>
+                    <hr class="w-25 mx-auto my-5">
 
-                    // 1. Aktifkan scroll kembali setelah tombol diklik
-                    document.body.classList.remove("no-scroll");
+                    <p class="fst-italic small mb-2 letter-space">save our date</p>
+                    <h2 class="display-5 mb-3">AKAD</h2>
+                    <p class="mb-4">08.00 - 09.00 WIB</p>
+                    <p class="fw-bold small">Gedung...</p>
+                    <a href="#" target="_blank" class="btn-instagram">
+                        Buka Maps
+                    </a>
+                </div>
+            </section>
+            <section class="resepsi-section d-flexalign-items-center justify-content-center text-center p-4">
+                <div class="container">
+                    <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="display-5 mb-3">RESEPSI</h2>
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="fs-5 mb-4">11.00 – 13.00 WIB</p>
 
-                    // 2. Fullscreen
-                    const element = document.documentElement;
-                    if (element.requestFullscreen) {
-                        element.requestFullscreen();
-                    } else if (element.mozRequestFullScreen) {
-                        element.mozRequestFullScreen();
-                    } else if (element.webkitRequestFullscreen) {
-                        element.webkitRequestFullscreen();
-                    } else if (element.msRequestFullscreen) {
-                        element.msRequestFullscreen();
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="fw-bold mb-1">Gedung ....</p>
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="mb-4 opacity-75">
+                        KALIBOTO RT03 / RW04,BENER,PURWOREJO
+                    </p>
+
+
+                    <a data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        href="https://maps.app.goo.gl/YourGoogleMapsLinkHere" target="_blank" class="btn-instagram">
+                        BUKA MAPS
+                    </a>
+                    <div class="mt-5" data-aos="fade-up" data-aos-duration="1000"
+                        data-aos-anchor-placement="bottom-bottom">
+                        <img src="{{ asset('asset/img/1.webp') }}" alt="Frame" class="wedding-frame-img shadow">
+
+                        <p class=" text-uppercase mb-2 letter-space">Capture Your Moment</p>
+                        <h2 class="mb-3">WEDDING FRAME</h2>
+
+                        <p class="px-3 opacity-75 mb-4">
+                            Unggah dan abadikan momen kamu saat menghadiri pernikahan kami dengan menggunakan Wedding
+                            Frame di bawah
+                            ini.
+                        </p>
+
+                        <a href="https://www.instagram.com/ar/YOUR_FILTER_ID" target="_blank" class="btn-instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                            </svg>
+                            WEDDING FRAME
+                        </a>
+
+                        <p class="mt-4 extra-small opacity-50 fst-italic">
+                            *Disarankan untuk memperbarui aplikasi Instagram ke versi terbaru.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+            <section id="gallery" class="gallery-section text-center">
+                <div class="container">
+                    <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="gallery-title display-5 mb-3">OUR MOMENT</h2>
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="gallery-quote mb-2">
+                        "And I'd choose you; in a hundred lifetimes, in a hundred worlds, in any version of reality, I'd
+                        find you and
+                        I'd choose you."
+                    </p>
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="mb-5 text-secondary">Photo & Video by Instudio</p>
+
+                    <div class="row g-3">
+                        <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                            class="col-12 mb-2">
+                            <img src="{{ asset('asset/img/1.webp') }}" class="gallery-item img-main"
+                                alt="Main Moment">
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                            class="col-6">
+                            <img src="{{ asset('asset/img/1.webp') }}" class="gallery-item img-tall" alt="Moment 1">
+                        </div>
+                        <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                            class="col-6">
+                            <img src="{{ asset('asset/img/3.webp') }}" class="gallery-item img-tall" alt="Moment 2">
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                            class="col-6">
+                            <img src=" {{ asset('asset/img/bg.webp') }}" class="gallery-item img-tall"
+                                alt="Moment 3">
+                        </div>
+                        <div data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                            class="col-6">
+                            <img src="{{ asset('asset/img/hero.webp') }}" class="gallery-item img-tall"
+                                alt="Moment 4">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="rsvp-section text-center" id="rsvp">
+                <div class="container pt-5">
+                    <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="display-5 mb-3">RSVP</h2>
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="mb-5">Bagi tamu undangan yang akan menghadiri acara pernikahan kami, mohon mengirimkan
+                        konfirmasi kehadiran dengan mengisi formulir berikut ini:</p>
+
+                    <form id="rsvpForm" class="mb-5 text-start" data-aos="fade-up" data-aos-duration="1000"
+                        data-aos-anchor-placement="bottom-bottom">
+                        <div class="mb-3">
+                            <label class="form-label small">Nama</label>
+                            <input type="text" class="form-control form-control-custom" id="nama"
+                                placeholder="Masukkan Nama Anda">
+                        </div>
+
+                        <div class="mb-3" data-aos="fade-up" data-aos-duration="1000"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <label class="form-label small">Konfirmasi Kehadiran</label>
+                            <div class="d-flex gap-2">
+                                <input type="radio" class="btn-check" name="kehadiran" id="hadir"
+                                    value="Hadir">
+                                <label class="btn btn-outline-light w-50" for="hadir">Hadir</label>
+
+                                <input type="radio" class="btn-check" name="kehadiran" id="tidakHadir"
+                                    value="Tidak Hadir">
+                                <label class="btn btn-outline-light w-50" for="tidakHadir">Tidak Hadir</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4" data-aos="fade-up" data-aos-duration="1000"
+                            data-aos-anchor-placement="bottom-bottom">
+                            <label class="form-label small">Doa & Ucapan</label>
+                            <textarea class="form-control form-control-custom" id="ucapan" rows="4"
+                                placeholder="Tulis doa & ucapan Anda"></textarea>
+                        </div>
+
+                        <button data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                            type="button" onclick="kirimWA()"
+                            class="btn btn-light w-100 fw-bold py-2">KIRIM</button>
+                    </form>
+
+                    <hr class="my-5 opacity-25" data-aos="fade-up" data-aos-duration="1000"
+                        data-aos-anchor-placement="bottom-bottom">
+
+                    <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="display-5 mb-3">WISHES</h2>
+                    <p data-aos="fade-up" data-aos-duration="1000" data-aos-anchor-placement="bottom-bottom"
+                        class="mb-4">Terima kasih telah memberikan ucapan selamat, saran pernikahan terbaik, hal-hal
+                        lucu, atau
+                        apa pun itu—semuanya istimewa bagi kami!</p>
+
+                    <div class="wishes-container" data-aos="fade-up" data-aos-duration="1000"
+                        data-aos-anchor-placement="bottom-bottom">
+                        <div class="wish-card">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold">Deby Gascoign 99 <span class="text-danger">✘</span></span>
+                                <small class="opacity-50">4 months ago</small>
+                            </div>
+                            <p class="small mb-0">SAMAWA nada.. maaf blm bisa hadir masih di Luar kota</p>
+                        </div>
+
+                        <div class="wish-card">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold">Cheesecake <span class="text-success">✔</span></span>
+                                <small class="opacity-50">4 months ago</small>
+                            </div>
+                            <p class="small mb-0">Barakallahu laka wa baraka alayka... Semoga sakinah mawaddah
+                                warahmah. Langgung sampai
+                                surga-Nya aamiin 🤲🏻💖</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="gift" class="gift py-5 px-4">
+                <div class="container width500">
+                    <h2 class="gift-title" data-aos="fade-down">WEDDING GIFT</h2>
+                    <p class=" mb-5 opacity-75" data-aos="fade-up">
+                        Cinta, tawa, dan kebersamaan Anda di hari pernikahan kami adalah hadiah terindah.
+                        Namun, jika Anda ingin memberikan hadiah, segala bentuk hadiah untuk kehidupan baru kami akan
+                        sangat berarti.
+                    </p>
+
+                    <div class="gift-card" data-aos="fade-up">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg"
+                                    alt="BNI" width="60">
+                            </div>
+                            <div class="gift-info">
+                                <h6>BANK BNI</h6>
+                                <p id="norek1">31991939970362</p>
+                                <small class="d-block opacity-50 ">A/N AGNESTYA LINTANG VIOLIN ASIAN</small>
+                            </div>
+                        </div>
+                        <button class="btn-copy" onclick="copyToClipboard('31991939970362')">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="gift-card" data-aos="fade-up">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/BRI_2020.svg/1200px-BRI_2020.svg.png"
+                                    alt="BRI" width="60">
+                            </div>
+                            <div class="gift-info">
+                                <h6>BANK BRI</h6>
+                                <p id="norek2">007801026087534</p>
+                                <small class="d-block opacity-50">A/N KUNTO SETIADI</small>
+                            </div>
+                        </div>
+                        <button class="btn-copy" onclick="copyToClipboard('007801026087534')">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="gift-card" data-aos="fade-up">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <div
+                                    class="bg-light text-dark rounded-circle d-flex align-items-center justify-content-center icon">
+                                    <i class="fa-solid fa-gift"></i>
+                                </div>
+                            </div>
+                            <div class="gift-info">
+                                <h6>KIRIM KADO</h6>
+                                <p class="addrs">Kaliboto RT03 / RW04, Bener, Purworejo</p>
+                            </div>
+                        </div>
+                        <button class="btn-copy" onclick="copyToClipboard('Kaliboto RT03 / RW04, Bener, Purworejo')">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="gift-card trigger" id="giftToggle" onclick="toggleGiftForm()" data-aos="fade-up">
+                        <div class="d-flex align-items-center" data-aos="fade-up">
+                            <div class="me-3" data-aos="fade-up">
+                                <div
+                                    class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center icon">
+                                    <i data-aos="fade-up" class="fa-solid fa-box-open"></i>
+                                </div>
+                            </div>
+                            <div class="gift-info">
+                                <p class="big">KONFIRMASIKAN KADOMU</p>
+                            </div>
+                        </div>
+                        <i data-aos="fade-up" class="fa-solid fa-chevron-down arrow-icon"></i>
+                    </div>
+
+                    <div class="confirm-gift-wrapper" id="giftFormContainer" data-aos="fade-up">
+                        <div class="confirm-gift-container p-4">
+                            <h3 class="confirm-title text-center">KONFIRMASI KIRIM KADO</h3>
+                            <form id="giftForm">
+                                <input type="text" id="senderName" class="form-control form-gift-input"
+                                    placeholder="Tuliskan Nama Anda Disini" required>
+                                <input type="text" id="giftAmount" class="form-control form-gift-input"
+                                    placeholder="Nominal/Kado" required>
+                                <select id="targetAccount" class="form-select form-gift-input" required>
+                                    <option value="" disabled selected>Rekening/Alamat Tujuan</option>
+                                    <option value="BNI (Agnestya Lintang Violin Asian)">BNI (Agnestya Lintang Violin
+                                        Asian)</option>
+                                    <option value="BRI (Kunto Setiadi)">BRI (Kunto Setiadi)</option>
+                                    <option value="Pondok Sidokare Asri (Alamat Fisik)">Pondok Sidokare Asri (Alamat
+                                        Fisik)</option>
+                                </select>
+                                <button type="button" class="btn-wa-confirm" onclick="sendGiftWA()">KONFIRMASI VIA
+                                    WHATSAPP</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="thank-you-section text-center d-flex flex-column">
+                <div class="container" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-anchor-placement="bottom-bottom">
+                    <h2 class="thank-you-title display-4 mb-4">THANK YOU</h2>
+
+                    <p class="thank-you-text mb-4">
+                        Saatnya mempersiapkan pakaian terbaikmu. Kami sudah menunggu momen ini.
+                        Catat tanggalnya, dandani dirimu! Bergabunglah dengan kami untuk merayakan babak baru dalam
+                        hidup kami.
+                    </p>
+
+                    <div class="couple-name-footer">
+                        Adi & Violin
+                    </div>
+                </div>
+                <div class="footer-credit mt-5" data-aos="fade-up" data-aos-duration="1000"
+                    data-aos-anchor-placement="bottom-bottom">
+                    <h3 class="brand-name">Instudio</h3>
+                    <p class="copyright-text">Digital Wedding Invitation © 2025</p>
+
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+        <audio id="bgMusic" loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="fixed-controls">
+            <button class="control-btn" onclick="toggleFullScreen()" title="Full Screen">
+                <i class="fa-solid fa-expand" id="fsIcon"></i>
+            </button>
+
+            <button class="control-btn" onclick="toggleMusic()" title="Play/Pause Music">
+                <i class="fa-solid fa-compact-disc" id="musicIcon"></i>
+            </button>
+        </div>
+
+
+        <script>
+            AOS.init();
+        </script>
+
+        <script>
+            const music = document.getElementById("bgMusic");
+            const musicIcon = document.getElementById("musicIcon");
+
+            // Fungsi Play/Pause Musik
+            function toggleMusic() {
+                if (music.paused) {
+                    music.play();
+                    musicIcon.classList.add("music-playing");
+                } else {
+                    music.pause();
+                    musicIcon.classList.remove("music-playing");
+                }
+            }
+
+            // Fungsi Full Screen Window
+            function toggleFullScreen() {
+                const fsIcon = document.getElementById("fsIcon");
+
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                    fsIcon.classList.replace("fa-expand", "fa-compress");
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                        fsIcon.classList.replace("fa-compress", "fa-expand");
                     }
+                }
+            }
 
-                    // 3. Scroll ke section + play music
+            function openInvitation() {
+                music.play();
+                musicIcon.classList.add("music-playing");
+            }
+            const targetDate = new Date("Feb 6, 2026 08:00:00").getTime();
+
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerHTML = days;
+                document.getElementById("hours").innerHTML = hours;
+                document.getElementById("minutes").innerHTML = minutes;
+                document.getElementById("seconds").innerHTML = seconds;
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("days").innerHTML = "00";
+                    // dst...
+                }
+            }, 1000);
+
+            function toggleNav() {
+                const nav = document.getElementById('navOverlay');
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
                     setTimeout(() => {
-                        openSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        nav.style.display = 'none';
+                    }, 400); // Menunggu animasi selesai
+                } else {
+                    nav.style.display = 'flex';
+                    setTimeout(() => {
+                        nav.classList.add('active');
+                    }, 10); // Memberi jeda kecil untuk trigger animasi
+                }
+            }
 
-                        if (musicPlayer) {
-                            musicPlayer.play().catch(error => {
-                                console.log('Autoplay dicegah. Perlu interaksi pengguna.',
-                                    error);
-                            });
-                        }
-                    }, 500);
+            function sendGiftWA() {
+                const name = document.getElementById('senderName').value;
+                const amount = document.getElementById('giftAmount').value;
+                const target = document.getElementById('targetAccount').value;
+                const phoneNumber = "6282232947661"; // Nomor tujuan sesuai permintaan kamu
+
+                if (name && amount && target) {
+                    // Format teks sesuai permintaan kamu
+                    const message =
+                        `Hai, saya ${name} ingin konfirmasi pemberian angpao %26 kado pernikahan berupa ${amount}. Melalui _*${target}*_. Bisa dicek yaa.`;
+
+                    const waLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+                    window.open(waLink, '_blank');
+                } else {
+                    alert("Silakan lengkapi semua data form konfirmasi.");
+                }
+            }
+
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("Nomor rekening berhasil disalin!");
                 });
             }
-        });
-    </script>
-    <!-- coundown -->
-    <script>
-        // Tanggal target yang akan dihitung mundurnya
-        var targetDate = new Date("December 14, 2025 23:59:59").getTime();
 
-        // Memperbarui hitungan mundur setiap 1 detik
-        var countdown = setInterval(function() {
-            // Mendapatkan waktu sekarang
-            var now = new Date().getTime();
+            function toggleGiftForm() {
+                const wrapper = document.getElementById('giftFormContainer');
+                const trigger = document.getElementById('giftToggle');
 
-            // Menghitung selisih waktu antara sekarang dan target
-            var distance = targetDate - now;
+                // Toggle class active
+                wrapper.classList.toggle('active');
+                trigger.classList.toggle('active');
 
-            // Menghitung hari, jam, menit, dan detik
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Menampilkan hasil perhitungan mundur pada elemen dengan id "countdown"
-            document.getElementById("hari").innerHTML = days;
-            document.getElementById("jam").innerHTML = hours;
-            document.getElementById("menit").innerHTML = minutes;
-            document.getElementById("detik").innerHTML = seconds;
-
-            // Menghentikan hitungan mundur jika sudah mencapai target
-            if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById("countdown").innerHTML = "Waktu telah berakhir";
+                // Scroll otomatis ke form jika dibuka (opsional)
+                if (wrapper.classList.contains('active')) {
+                    setTimeout(() => {
+                        wrapper.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest'
+                        });
+                    }, 300);
+                }
             }
-        }, 1000);
-    </script>
-    <script src="{{ asset('asset/bootstraps/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('asset/js/main.js') }}"></script>
+
+            function sendGiftWA() {
+                const name = document.getElementById('senderName').value;
+                const amount = document.getElementById('giftAmount').value;
+                const target = document.getElementById('targetAccount').value;
+                const phoneNumber = "6282232947661";
+
+                if (name && amount && target) {
+                    // Teks pesan sesuai permintaan Anda
+                    const message =
+                        `Hai, saya ${name} ingin konfirmasi pemberian angpao %26 kado pernikahan berupa ${amount}. Melalui _*${target}*_. Bisa dicek yaa.`;
+                    const waLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+                    window.open(waLink, '_blank');
+                } else {
+                    alert("Mohon lengkapi semua data konfirmasi.");
+                }
+            }
+        </script>
+
+        {{-- sweetaler --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        <script src="{{ asset('asset/bootstraps/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>

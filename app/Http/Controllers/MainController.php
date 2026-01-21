@@ -54,6 +54,10 @@ class MainController extends Controller
         return view('index', compact('message'));
     }
 
+    public function toTamu(){
+        return view('to');
+    }
+
     public function delTamu($id){
         MyContact::where('id', $id)->delete();
         return redirect()->back()->with('success','Data berhasil terhapus');
@@ -92,7 +96,7 @@ class MainController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('landingPage');
+        return redirect()->route('toTamu');
     }
 
     public function login(){
@@ -125,8 +129,7 @@ class MainController extends Controller
 
     public function sendUndangan($slug){
         $mycontact = MyContact::where('slug', $slug)->first();
-        $message = Message::get();
-        return view('index', compact('message', 'mycontact'));
+        return view('to', compact( 'mycontact'));
     }
 
 
